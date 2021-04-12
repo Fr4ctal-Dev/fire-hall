@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en" id="root_html">
+<head>
+    <meta charset="UTF-8">
+    <title>fire-hall</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
+
+<div class="row">
+    <div class="col-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fire Hall</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                View
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/view-members">Members</a></li>
+                                <li><a class="dropdown-item" href="/view-assignments">Assignments</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Edit
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/edit-members">Members</a></li>
+                                <li><a class="dropdown-item" href="/edit-assignments">Assignments</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a class="btn btn-outline-danger" type="submit" href="/logout">Log Out</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 mt-3">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h1">Add Member</h1>
+        </div>
+        <div class="form">
+            <form action="/edit-members" method="post">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Surname and name</span>
+                    <input type="text" placeholder="Last name" aria-label="Last name" class="form-control" id="surname_input" name="surname">
+                    <input type="text" placeholder="First name" aria-label="First name" class="form-control" id="name_input" name="name">
+                    <span></span>
+
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date of birth</span>
+                    <input type="date" placeholder="Date of birth" aria-label="dob" class="form-control" id="dob_input" name="dob">
+                    <span></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Task</span>
+                    <select class="form-select" id="task-select" name="task">
+                        <script>
+                            var tasks = '<%- JSON.stringify(tasks) %>'
+                            tasks = JSON.parse(tasks)
+                            for (const tasksKey in tasks) {
+                                $('#task-select').append('<option value='+ tasks[tasksKey].tid + '>'+ tasks[tasksKey].task +'</option>')
+                            }
+                        </script>
+                    </select>
+                    <a class="btn btn-dark" href="/new-task">New</a>
+                    <span></span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date of joining</span>
+
+                    <input type="date" placeholder="Date of joining" aria-label="doj" class="form-control" id="doj_input" name="doj">
+                    <span></span>
+                </div>
+                <div class="input-group mb-3">
+                    <button class="btn btn-primary btn-block" type="submit">Add</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
